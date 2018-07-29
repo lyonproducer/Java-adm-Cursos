@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2017 03:38:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Instructor" table="instructor" catalog="cursos" optimistic-lock="version">
+        <id name="idInstructor" type="java.lang.Integer">
+            <column name="idInstructor" />
+            <generator class="identity" />
+        </id>
+        <property name="ciInstructor" type="string">
+            <column name="ciInstructor" length="8" not-null="true" />
+        </property>
+        <property name="nombreInstructor" type="string">
+            <column name="NombreInstructor" length="20" not-null="true" />
+        </property>
+        <property name="apellidoInstructor" type="string">
+            <column name="ApellidoInstructor" length="20" not-null="true" />
+        </property>
+        <property name="especialidad" type="string">
+            <column name="Especialidad" length="50" not-null="true" />
+        </property>
+        <property name="correoInstructor" type="string">
+            <column name="CorreoInstructor" length="45" not-null="true" />
+        </property>
+        <property name="tlfInstructor" type="string">
+            <column name="TlfInstructor" length="20" not-null="true" />
+        </property>
+        <property name="estadoInstructor" type="int">
+            <column name="EstadoInstructor" not-null="true" />
+        </property>
+        <set name="cursos" table="curso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_Instructor" not-null="true" />
+            </key>
+            <one-to-many class="Modelo.Curso" />
+        </set>
+    </class>
+</hibernate-mapping>
